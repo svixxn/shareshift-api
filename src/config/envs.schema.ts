@@ -6,6 +6,8 @@ export const EnvSchema = z.object({
     .default('development'),
   PORT: z.coerce.number().default(3000),
   DATABASE_URL: z.string().min(1),
+  ENCRYPTION_KEY: z.string().length(32),
+  ENCRYPTION_IV: z.string().length(16),
 });
 
 export type Env = z.infer<typeof EnvSchema>;

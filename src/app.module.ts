@@ -5,6 +5,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { validate } from './config/envs.schema';
 import { UsersModule } from './models/users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { HashingService } from './shared/services/hashing/hashing.service';
+import { HashingModule } from './shared/services/hashing/hashing.module';
 
 @Module({
   imports: [
@@ -20,8 +22,9 @@ import { MongooseModule } from '@nestjs/mongoose';
       inject: [ConfigService],
     }),
     UsersModule,
+    HashingModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, HashingService],
 })
 export class AppModule {}
