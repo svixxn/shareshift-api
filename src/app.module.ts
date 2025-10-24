@@ -7,6 +7,8 @@ import { UsersModule } from './models/users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { HashingService } from './shared/services/hashing/hashing.service';
 import { HashingModule } from './shared/services/hashing/hashing.module';
+import { AuthModule } from './models/auth/auth.module';
+import { SocialMediaModule } from './models/social-media/social-media.module';
 
 @Module({
   imports: [
@@ -22,7 +24,9 @@ import { HashingModule } from './shared/services/hashing/hashing.module';
       inject: [ConfigService],
     }),
     UsersModule,
+    AuthModule,
     HashingModule,
+    SocialMediaModule,
   ],
   controllers: [AppController],
   providers: [AppService, HashingService],
